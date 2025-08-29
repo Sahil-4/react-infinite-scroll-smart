@@ -1,7 +1,7 @@
 {
   "name": "react-infinite-scroll-smart",
   "description": "Infinite scroll component for list and reverse list, feed and chats",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
