@@ -16,9 +16,11 @@ A lightweight and flexible **Infinite Scroll Component** for React. Supports bot
 
 ## Usage
 
+A react app demo is also added in [/demo](/demo) folder
+
 1. Feed (normal list)
 
-```ts
+```tsx
 import { InfiniteScroll } from "react-infinite-scroll-smart";
 
 function App() {
@@ -39,8 +41,8 @@ function App() {
               <p>USD {item.price}</p>
             </div>
           ))}
-          {loading && <p>Loadng...</p>}
-          {!!error && <p>Error occorred</p>}
+          {loading && <p>Loading...</p>}
+          {!!error && <p>Error occurred</p>}
         </>
       </InfiniteScroll>
     </div>
@@ -52,7 +54,7 @@ export default App;
 
 2. Chats (revered list)
 
-```ts
+```tsx
 import { InfiniteScroll } from "react-infinite-scroll-smart";
 
 function App() {
@@ -73,8 +75,8 @@ function App() {
               <p>USD {item.price}</p>
             </div>
           ))}
-          {loading && <p>Loadng...</p>}
-          {!!error && <p>Error occorred</p>}
+          {loading && <p>Loading...</p>}
+          {!!error && <p>Error occurred</p>}
         </>
       </InfiniteScroll>
     </div>
