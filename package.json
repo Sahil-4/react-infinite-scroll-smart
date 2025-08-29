@@ -1,0 +1,43 @@
+{
+  "name": "react-infinite-scroll-smart",
+  "description": "Infinite scroll component for list and reverse list, feed and chats",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "react",
+    "infinite-scroll",
+    "component",
+    "infinite-scroll-component",
+    "reusable-infinite-scroll",
+    "chats-infinite-scroll",
+    "feeds-infinite-scroll"
+  ],
+  "author": "Sahil-4",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sahil-4/react-infinite-scroll-smart"
+  },
+  "license": "MIT",
+  "type": "module",
+  "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.6.0"
+  }
+}
