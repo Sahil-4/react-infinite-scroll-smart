@@ -2,16 +2,21 @@ import { useEffect, useMemo, useRef } from "react";
 
 const useInfiniteScroll = (
   callback: () => Promise<void>,
-  direction: "top" | "bottom",
-  disabled: boolean,
-  rootMargin: string
+  direction: "top" | "bottom" = "bottom",
+  useWindowScroll: boolean = false,
+  disabled: boolean = false,
+  rootMargin: string = "100px",
 ) => {
   const sentinelRef = useRef<HTMLDivElement | null>(null);
   const parentRef = useRef<HTMLDivElement | null>(null);
 
-  // reverse rending based on direction
-  const chatStyles = useMemo<React.CSSProperties>(() => {
-    return direction === "top" ? { display: "flex", flexDirection: "column-reverse" } : {};
+  // default styling for infinite scroll div
+  const containerStyles = useMemo<React.CSSProperties>(() => {
+    if (direction === "top") {
+      // reverse rending
+      return { display: "flex", flexDirection: "column-reverse" };
+    }
+    return {};
   }, [direction]);
 
   // Intersection Observer part
@@ -31,21 +36,16 @@ const useInfiniteScroll = (
         }
       },
       {
-        root: parentRef.current,
+        root: useWindowScroll ? null : parentRef.current,
         rootMargin,
-      }
+      },
     );
 
     observer.observe(sentinelRef.current);
     return () => observer.disconnect();
-  }, [callback, disabled, direction, rootMargin]);
+  }, [callback, disabled, direction, rootMargin, parentRef, sentinelRef]);
 
-  // Initial load
-  useEffect(() => {
-    callback();
-  }, []);
-
-  return { sentinelRef, parentRef, chatStyles };
+  return { sentinelRef, parentRef, containerStyles };
 };
 
 export default useInfiniteScroll;
