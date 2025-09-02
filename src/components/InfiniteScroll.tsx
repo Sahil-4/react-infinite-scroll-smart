@@ -5,6 +5,7 @@ type Props = PropsWithChildren & {
   callback: () => Promise<void>;
   className?: string;
   disabled?: boolean;
+  useWindowScroll?: boolean;
   direction?: "bottom" | "top";
   style?: React.CSSProperties;
   rootMargin?: string;
@@ -16,14 +17,16 @@ const InfiniteScroll = (props: Props) => {
     children,
     className,
     disabled = false,
+    useWindowScroll = false,
     direction = "bottom",
-    style,
+    style = {},
     rootMargin = "100px",
   } = props;
 
-  const { sentinelRef, parentRef, chatStyles } = useInfiniteScroll(
+  const { sentinelRef, parentRef, containerStyles } = useInfiniteScroll(
     callback,
     direction,
+    useWindowScroll,
     disabled,
     rootMargin,
   );
@@ -32,12 +35,9 @@ const InfiniteScroll = (props: Props) => {
     <div
       ref={parentRef}
       className={className}
-      style={{ overflow: "auto", ...style }}>
-      {direction === "top" && <div ref={sentinelRef} style={{ height: 1 }} />}
-      <div style={{ ...chatStyles }}>{children}</div>
-      {direction === "bottom" && (
-        <div ref={sentinelRef} style={{ height: 1 }} />
-      )}
+      style={{ ...containerStyles, ...style }}>
+      {children}
+      <div ref={sentinelRef} style={{ height: 1 }} />
     </div>
   );
 };
